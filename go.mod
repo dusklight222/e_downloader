@@ -1,3 +1,3 @@
-module e_downloader_client
+module e_downloader
 
 go 1.17

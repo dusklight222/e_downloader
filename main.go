@@ -1,12 +1,9 @@
 package main
 
 import (
+	filedeal "e_downloader/file_deal"
 	"fmt"
 	"os"
-
-	// "fmt"
-	// "os"
-	"strings"
 )
 
 var (
@@ -16,19 +13,19 @@ var (
 
 func main() {
 	list := os.Args
-	if len(list) != 2 {
-		fmt.Println("请输入您的URL文件")
+	if len(list) != 3 {
+		fmt.Println("请输入您的URL文件 下载器")
 		return
 	}
 	path := list[1]
-	// root, _ := os.Getwd()
-	// 获取文件名
-	num1 := strings.LastIndex(path, ".txt")
-	// 获取文件名，以此作为根目录
-	root := path[:num1]
-	fmt.Println(root)
-	// param := "e5:/" + root
-	// downloaddeal.OnedriveMkdir("rclone", "mkdir", param)
-	// 文件处理
-	filedeal.FileDeal(path, root, DomainHeader)
+	downloaderPath := list[2]
+	// 创建根目录文件夹
+	root, temp := filedeal.RootMkdir(path)
+	if temp {
+		// 文件处理
+		filedeal.FileDeal(path, root, DomainHeader, downloaderPath)
+	} else {
+		return
+	}
+
 }

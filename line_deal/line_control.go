@@ -1,7 +1,7 @@
 package linedeal
 
 import (
-	"fmt"
+	"os"
 )
 
 // 进行字符串的筛选
@@ -13,21 +13,21 @@ func StringDeal(localRoot string, root string, DomainHeader string, line string,
 	var nowName string = localName
 	// 当前url
 	var nowUrl string = localUrl
+	var temp bool
 	// 判断字符串中是否包含一、二、三等等
 	if StringJudgeHanzi(line) {
 		// 创建对应的文件夹
-		nowRoot = StringDealHanzi(root, line)
-		fmt.Println(nowRoot)
+		nowRoot, temp = StringDealHanzi(root, line)
+		if !temp {
+			os.Exit(-1)
+		}
 	} else if !StringJudgem3u8(line) {
 		// 说明当前的字符串是视频的名称
 		// 将文件的绝对路径名称返回
 		nowName = StringDealName(localRoot, line)
-		fmt.Println(nowName)
 	} else {
 		// 对包含m3u8的字符串进行处理
 		nowUrl = StringDealM3u8(DomainHeader, line)
-		fmt.Println(nowUrl)
-		// os.Exit(-1)
 	}
 	return nowRoot, nowName, nowUrl
 }
