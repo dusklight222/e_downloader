@@ -19,7 +19,13 @@
   + 一般为第一条
   + 如果视频可以切换清晰度，默认为720p，切换后猫抓会获取到另外的m3u8链接，注意区分
 
-### 3. 写入文件
+### 3. 下载器下载
+
++ [下载器项目地址](https://github.com/oopsguy/m3u8)，在此致敬oopsguy老哥
++ [下载器分享链接](https://dusklight-my.sharepoint.com/:f:/g/personal/qin_dusklight_onmicrosoft_com/EnFy4WhKYsBDia98O_XaA2wBf5_RmAwFf44_gOLl_CuiSQ?e=5xAavL)
++ 将其与e_downloader放一起即可
+
+### 4. 写入文件
 
 + 请务必写成这个格式，可以自动创建文件夹以及下载链接到指定目录，更为方便美观
 
